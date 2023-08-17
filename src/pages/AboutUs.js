@@ -6,11 +6,11 @@ const AboutUs = () => {
         <div>
             <Header />
             <div>
-                <h1 style={{ marginTop: "55px", textAlign: "center" }}>About</h1>
+                <h1 style={{ marginTop: "55px", textAlign: "center", textTransform: "uppercase" }}>About</h1>
                 <img
                     src="https://prasadyash2411.github.io/ecom-website/img/Band%20Members.png"
                     alt="image"
-                    style={{ height: "250px", width: "400px", marginInline: "440px" }}
+                    style={{ height: "300px", width: "300px", marginLeft: "200px", marginRight: "50px", borderRadius: "50%",  float: "left" }}
                 />
                 <p style={{ marginTop: "25px", marginInline: "200px" }}>Lorem ipsum carrots enhanced rebates. Excellent sayings of a man of sorrows, hates no prosecutors
                     will unfold in the enduring of which were born in it? Often leads smallest mistake some pain main

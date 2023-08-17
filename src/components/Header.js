@@ -14,8 +14,8 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <ul className='navbar-nav me-auto mb-2 mb-lg-0' style={{ marginLeft: "420px" }}>
-                            <li className='nav-item'>HOME</li>
-                            <li className='nav-item mx-5'>STORE</li>
+                            <Link to="/" style={{ textDecorationLine: 'none', color: "black", textTransform: "uppercase" }}><li className='nav-item'>HOME</li></Link>
+                            <Link to="store" style={{ textDecorationLine: 'none', color: "black", textTransform: "uppercase" }}><li className='nav-item mx-5'>STORE</li></Link>
                             <Link to="aboutus" style={{ textDecorationLine: 'none', color: "black", textTransform: "uppercase" }}><li className='nav-item'>About</li></Link>
                         </ul>
                         <Link to="cart">

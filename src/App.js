@@ -1,8 +1,9 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
-import Home from './pages/Home';
+import Store from './pages/Store';
 import Cart from './pages/Cart';
 import AboutUs from "./pages/AboutUs";
+import Home from './pages/Home';
 
 const productsArr = [
   {
@@ -47,9 +48,10 @@ const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={ <Home productsArr={productsArr}/> } />
-        <Route path="cart" element={ <Cart/> } />
-        <Route path="aboutus" element={ <AboutUs/> } />
+        <Route path="/" element={<Home />} />
+        <Route path="/store" element={<Store productsArr={productsArr} />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="aboutus" element={<AboutUs />} />
       </Routes>
     </div>
   )
