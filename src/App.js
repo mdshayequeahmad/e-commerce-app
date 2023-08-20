@@ -4,6 +4,7 @@ import Store from './pages/Store';
 import Cart from './pages/Cart';
 import AboutUs from "./pages/AboutUs";
 import Home from './pages/Home';
+import ContactUs from './pages/ContactUs';
 
 const productsArr = [
   {
@@ -50,8 +51,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/store" element={<Store productsArr={productsArr} />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="aboutus" element={<AboutUs />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/contactus" element={<ContactUs />} />
       </Routes>
     </div>
   )
