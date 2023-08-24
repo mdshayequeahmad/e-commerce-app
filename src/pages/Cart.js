@@ -11,7 +11,7 @@ const Cart = () => {
             <div>
                 <Header />
             </div>
-            <div>
+            <div style={{width: "75%"}}>
                 <h1 style={{ marginLeft: "50px", marginTop: "50px" }}>Cart</h1>
                 {productData.length === 0 ? (
                     <div className='ms-5'>
