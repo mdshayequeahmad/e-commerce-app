@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    productData: []
+    productData: [],
+    token: null,
 }
 
 export const eCommerceSlice = createSlice({
@@ -19,8 +20,15 @@ export const eCommerceSlice = createSlice({
                 state.productData.push(action.payload);
             }
         },
+        login: (state, action) => {
+            state.token = action.payload;
+
+        },
+        logout: (state) => {
+            state.token = null;
+          },
     }
 })
 
-export const { addToCart } = eCommerceSlice.actions;
+export const { addToCart, login, logout } = eCommerceSlice.actions;
 export default eCommerceSlice.reducer;

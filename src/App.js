@@ -1,11 +1,13 @@
 import React from 'react';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Store from './pages/Store';
 import Cart from './pages/Cart';
 import AboutUs from "./pages/AboutUs";
 import Home from './pages/Home';
 import ContactUs from './pages/ContactUs';
 import ProductDetails from './pages/ProductDetails';
+import Login from './pages/Login';
+import { useSelector } from 'react-redux';
 
 const productsArr = [
   {
@@ -53,15 +55,30 @@ const productsArr = [
 ]
 
 const App = () => {
+
+  const token = useSelector((state) => state.ecommerce.token);
+
+  const PrivateRoute = ({ children }) => {
+    const isLoggedIn = token === undefined;
+    return isLoggedIn ? children : <Navigate to="/login" />;
+  }
+
   return (
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/store" element={<Store products={productsArr} />} />
+        <Route path="/store"
+          element={
+            <PrivateRoute>
+              <Store products={productsArr} />
+            </PrivateRoute>
+          }
+        />
         <Route path="/cart" element={<Cart />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="product/:id" element={<ProductDetails />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   )

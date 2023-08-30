@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import Header from '../components/Header';
@@ -6,12 +6,24 @@ import Header from '../components/Header';
 const Cart = () => {
     const productData = useSelector((state) => state.ecommerce.productData);
 
+    const [totalAmt, setTotalAmt] = useState("");
+
+    useEffect(() => {
+      let price = 0;
+      productData.map((item) => {
+        price += item.price * item.quantity;
+        return price;
+      });
+      setTotalAmt(price);
+    }, [productData])
+    
+
     return (
         <div>
             <div>
                 <Header />
             </div>
-            <div style={{width: "75%"}}>
+            <div>
                 <h1 style={{ marginLeft: "50px", marginTop: "50px" }}>Cart</h1>
                 {productData.length === 0 ? (
                     <div className='ms-5'>
@@ -30,6 +42,7 @@ const Cart = () => {
                                 </div>
                             </div>
                         ))}
+                        <h2 style={{textAlign: "end"}}>Total <span className='fw-bold'>${totalAmt}</span> </h2>
                     </div>
                 )}
             </div>
