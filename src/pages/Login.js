@@ -5,35 +5,48 @@ import { login } from '../redux/eCommerceSlice';
 
 const Login = () => {
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const submitHandler = (e) => {
         e.preventDefault();
 
-        fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBolyzhM_ri3M44pTTaXrVD0L7HRaqE7_I',
-            {
-                method: 'POST',
-                body: JSON.stringify({
-                    email: email,
-                    password: password,
-                    returnSecureToken: true
-                }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+        fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBolyzhM_ri3M44pTTaXrVD0L7HRaqE7_I', {
+            method: "POST",
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                returnSecureToken: true
+            }),
+            headers: {
+                'Content-Type': 'application/json'
             }
+        }
         )
-            .then((data) => {
-                dispatch(login(data.idToken)
-                );
-                navigate('/store');
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    return res.json().then((data) => {
+                        let errorMessage = 'Authentication Failed!';
+                        if (data && data.error && data.error.message) {
+                            errorMessage = data.error.message;
+                        }
+                        throw new Error(errorMessage);
+                    });
+                }
+            })
+            .then(data => {
+                dispatch(login(data.idToken));
+                setTimeout(() => {
+                    navigate('/store');
+                }, 1000);
             })
             .catch(err => {
-                alert(err.message)
+                alert(err.message);
             })
 
         setEmail("");

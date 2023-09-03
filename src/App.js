@@ -59,7 +59,7 @@ const App = () => {
   const token = useSelector((state) => state.ecommerce.token);
 
   const PrivateRoute = ({ children }) => {
-    const isLoggedIn = token === undefined;
+    const isLoggedIn = token;
     return isLoggedIn ? children : <Navigate to="/login" />;
   }
 

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     productData: [],
-    token: null,
+    token: "",
 }
 
 export const eCommerceSlice = createSlice({
@@ -15,20 +15,28 @@ export const eCommerceSlice = createSlice({
             );
 
             if (item) {
-                item.quantity += action.payload.quantity
+                item.quantity += action.payload.quantity;
             } else {
                 state.productData.push(action.payload);
             }
+        },
+        deleteItem: (state, action) => {
+            state.productData = state.productData.filter(
+                (item) => item._id !== action.payload
+            );
         },
         login: (state, action) => {
             state.token = action.payload;
 
         },
         logout: (state) => {
-            state.token = null;
-          },
+            state.token = "";
+        },
     }
 })
 
-export const { addToCart, login, logout } = eCommerceSlice.actions;
+export const { addToCart, deleteItem, login, logout } = eCommerceSlice.actions;
 export default eCommerceSlice.reducer;
+
+
+

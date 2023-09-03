@@ -17,8 +17,8 @@ const Home = () => {
       <div>
         <h1 style={{ marginTop: "100px", textAlign: "center" }}>TOURS</h1>
         <div style={{ marginInline: "250px", marginTop: "50px" }}>
-          {Arr.map((item) => (
-            <div>
+          {Arr.map((item, i) => (
+            <div key={i}>
               <div className='d-flex justify-content-between'>
                 <h5>{item.date}</h5>
                 <h5 className='text-secondary'>{item.add}</h5>

@@ -27,7 +27,7 @@ const Header = () => {
                             <Link to="/store" style={{ textDecorationLine: 'none', color: "black", textTransform: "uppercase" }}><li className='nav-item mx-5'>STORE</li></Link>
                             <Link to="/aboutus" style={{ textDecorationLine: 'none', color: "black", textTransform: "uppercase" }}><li className='nav-item'>About</li></Link>
                             <Link to="/contactus" style={{ textDecorationLine: 'none', color: "black", textTransform: "uppercase" }}><li className='nav-item mx-5'>Contact Us</li></Link>
-                            {token === null ? (
+                            {!token ? (
                                 <Link to="/login" style={{ textDecorationLine: 'none', color: "black", textTransform: "uppercase" }}><li className='nav-item'>Login</li></Link>
                             ) : (
                                 <Button onClick={logoutHandler} variant="light" style={{ color: "black", textTransform: "uppercase", marginLeft: "-15px" }}>Logout</Button>
