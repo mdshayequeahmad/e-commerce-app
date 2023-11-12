@@ -12,17 +12,16 @@ const ContactUs = () => {
     const submitFormHandler = async (e) => {
         e.preventDefault();
 
-        const details = {
-            name: name,
-            email: email,
-            phonenumber: phonenumber
+        try {
+            await axios.post('https://ecommerce-3f86e-default-rtdb.firebaseio.com/contactdetails.json', {
+                name: name,
+                email: email,
+                phonenumber: phonenumber
+            });
+            console.log("Request has been Sent");
+        } catch (error) {
+            console.log(error);
         }
-
-        await axios.post('https://ecommerce-3f86e-default-rtdb.firebaseio.com/contactdetails.json', JSON.stringify(details)).
-            then(() => {
-                console.log("Request has been Sent")
-            }).
-            catch((err) => console.log(err))
 
         setName("");
         setEmail("");
